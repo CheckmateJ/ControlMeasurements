@@ -35,9 +35,9 @@ namespace ControlMeasurements
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddDbContext<WaterContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("WaterContext")));
+            var connection = @"Data Source =.; Initial Catalog = MeasureWater; Integrated Security = True";
+            services.AddDbContext<WaterContext>
+       (options => options.UseSqlServer(connection));
 
         }
 
