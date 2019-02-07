@@ -4,16 +4,14 @@ using ControlMeasurements.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControlMeasurements.Migrations
 {
-    [DbContext(typeof(WaterContext))]
-    [Migration("20190206081400_MeasureWater")]
-    partial class MeasureWater
+    [DbContext(typeof(MeasurementsContext))]
+    partial class MeasurementsContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +19,7 @@ namespace ControlMeasurements.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ControlMeasurements.Models.Water", b =>
+            modelBuilder.Entity("ControlMeasurements.Models.WaterMeasurement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -32,7 +30,7 @@ namespace ControlMeasurements.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Waters");
+                    b.ToTable("WaterMeasurements");
                 });
 #pragma warning restore 612, 618
         }

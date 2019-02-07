@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ControlMeasurements.Models
 {
-    public class Water
+    public class WaterMeasurement
     {
         public Guid Id { get; set; }
         public string Place { get; set; }

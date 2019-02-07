@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ControlMeasurements.Data
 {
-    public class WaterContext : DbContext
+    public class MeasurementsContext : DbContext
     {
-        public WaterContext(DbContextOptions<WaterContext> options)
+        public MeasurementsContext(DbContextOptions<MeasurementsContext> options)
             : base(options)
         { }
-        public DbSet<Water> Waters { get; set; }
+        public DbSet<WaterMeasurement> WaterMeasurements { get; set; }
     }
 }
