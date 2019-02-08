@@ -3,6 +3,7 @@ using ControlMeasurements.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
@@ -72,7 +73,7 @@ namespace ControlMeasurements.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HeatingMeasurement(heatingMeasurement.Id))
+                    if (!Exist(heatingMeasurement.Id))
                     {
                         return NotFound();
                     }
@@ -84,11 +85,6 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(heatingMeasurement);
-        }
-
-        private bool HeatingMeasurement(Guid id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -122,7 +118,7 @@ namespace ControlMeasurements.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HeatingMeasurement(heatingMeasurement.Id))
+                    if (!Exist(heatingMeasurement.Id))
                     {
                         return NotFound();
                     }
@@ -134,6 +130,11 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(heatingMeasurement);
+        }
+
+        private bool Exist(Guid id)
+        {
+            return _context.HeatingMeasurements.Any(x => x.Id == id);
         }
     }
 }
