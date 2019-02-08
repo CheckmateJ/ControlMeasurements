@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ControlMeasurements.Data;
+﻿using ControlMeasurements.Data;
 using ControlMeasurements.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
@@ -17,10 +15,12 @@ namespace ControlMeasurements.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.HeatingMeasurements.ToListAsync());
         }
+
         public IActionResult Create()
         {
             return View();
@@ -38,6 +38,7 @@ namespace ControlMeasurements.Controllers
             }
             return View(heating);
         }
+
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -52,6 +53,7 @@ namespace ControlMeasurements.Controllers
             }
             return View(heatingMeasurement);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid Id, [Bind("Id,Place,Measurement")] HeatingMeasurement heatingMeasurement)
@@ -82,7 +84,6 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(heatingMeasurement);
-
         }
 
         private bool HeatingMeasurement(Guid id)
@@ -103,6 +104,7 @@ namespace ControlMeasurements.Controllers
             }
             return View(heatingMeasurement);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid Id, [Bind("Id,Place,Measurement")]HeatingMeasurement heatingMeasurement)
@@ -132,7 +134,6 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(heatingMeasurement);
-
         }
     }
 }

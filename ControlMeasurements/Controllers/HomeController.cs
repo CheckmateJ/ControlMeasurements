@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using ControlMeasurements.Data;
+using ControlMeasurements.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ControlMeasurements.Models;
-using ControlMeasurements.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace ControlMeasurements.Controllers
 {
@@ -18,10 +16,12 @@ namespace ControlMeasurements.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.WaterMeasurements.ToListAsync());
         }
+
         public IActionResult Create()
         {
             return View();
@@ -39,6 +39,7 @@ namespace ControlMeasurements.Controllers
             }
             return View(water);
         }
+
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -53,6 +54,7 @@ namespace ControlMeasurements.Controllers
             }
             return View(waterMeasurement);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid Id, [Bind("Id,Place,Measurement")] WaterMeasurement waterMeasurement)
@@ -67,11 +69,11 @@ namespace ControlMeasurements.Controllers
                 try
                 {
                     _context.Update(waterMeasurement);
-                    await _context.SaveChangesAsync();  
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!WaterMeasurement(waterMeasurement.Id))
+                    if (!Exist(waterMeasurement.Id))
                     {
                         return NotFound();
                     }
@@ -83,12 +85,6 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(waterMeasurement);
-            
-        }
-
-        private bool WaterMeasurement(Guid id)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -104,11 +100,12 @@ namespace ControlMeasurements.Controllers
             }
             return View(waterMeasurement);
         }
-             [HttpPost]
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete (Guid Id,[Bind("Id,Place,Measurement")]WaterMeasurement waterMeasurement)
+        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,Place,Measurement")]WaterMeasurement waterMeasurement)
         {
-            if(Id != waterMeasurement.Id)
+            if (Id != waterMeasurement.Id)
             {
                 return NotFound();
             }
@@ -121,7 +118,7 @@ namespace ControlMeasurements.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!WaterMeasurement(waterMeasurement.Id))
+                    if (!Exist(waterMeasurement.Id))
                     {
                         return NotFound();
                     }
@@ -133,12 +130,11 @@ namespace ControlMeasurements.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(waterMeasurement);
+        }
 
+        private bool Exist(Guid id)
+        {
+            return _context.WaterMeasurements.Any(x => x.Id == id);
         }
     }
-
- }
-
-    
-
-
+}
