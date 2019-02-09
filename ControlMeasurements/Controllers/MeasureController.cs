@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
-    public class WaterController : Controller
+    public class MeasureController : Controller
     {
         private MeasurementsContext _context;
 
-        public WaterController(MeasurementsContext context)
+        public MeasureController(MeasurementsContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.WaterMeasurements.ToListAsync());
+            return View(await _context.MeasurementsCategory.ToListAsync());
         }
 
         public IActionResult Create()
@@ -29,15 +29,15 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Place,Measurement")] WaterMeasurement water)
+        public async Task<IActionResult> Create([Bind("Place,Measurement")] MeasurementCategory measure)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(water);
+                _context.Add(measure);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(water);
+            return View(measure);
         }
 
         public async Task<IActionResult> Edit(Guid? id)
@@ -47,19 +47,19 @@ namespace ControlMeasurements.Controllers
                 return NotFound();
             }
 
-            var waterMeasurement = await _context.WaterMeasurements.SingleOrDefaultAsync(m => m.Id == id);
-            if (waterMeasurement == null)
+            var measurementCategory = await _context.MeasurementsCategory.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurementCategory == null)
             {
                 return NotFound();
             }
-            return View(waterMeasurement);
+            return View(measurementCategory);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,Place,Measurement")] WaterMeasurement waterMeasurement)
+        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,Place,Measurement")] MeasurementCategory measurementCategory)
         {
-            if (Id != waterMeasurement.Id)
+            if (Id != measurementCategory.Id)
             {
                 return NotFound();
             }
@@ -68,12 +68,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Update(waterMeasurement);
+                    _context.Update(measurementCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(waterMeasurement.Id))
+                    if (!Exist(measurementCategory.Id))
                     {
                         return NotFound();
                     }
@@ -84,7 +84,7 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(waterMeasurement);
+            return View(measurementCategory);
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -93,19 +93,19 @@ namespace ControlMeasurements.Controllers
             {
                 return NotFound();
             }
-            var waterMeasurement = await _context.WaterMeasurements.SingleOrDefaultAsync(m => m.Id == id);
-            if (waterMeasurement == null)
+            var measurementCategory = await _context.MeasurementsCategory.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurementCategory == null)
             {
                 return NotFound();
             }
-            return View(waterMeasurement);
+            return View(measurementCategory);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,Place,Measurement")]WaterMeasurement waterMeasurement)
+        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,Place,Measurement")]MeasurementCategory measurementCategory)
         {
-            if (Id != waterMeasurement.Id)
+            if (Id != measurementCategory.Id)
             {
                 return NotFound();
             }
@@ -113,12 +113,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Remove(waterMeasurement);
+                    _context.Remove(measurementCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(waterMeasurement.Id))
+                    if (!Exist(measurementCategory.Id))
                     {
                         return NotFound();
                     }
@@ -129,12 +129,12 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(waterMeasurement);
+            return View(measurementCategory);
         }
 
         private bool Exist(Guid id)
         {
-            return _context.WaterMeasurements.Any(x => x.Id == id);
+            return _context.MeasurementsCategory.Any(x => x.Id == id);
         }
     }
 }
