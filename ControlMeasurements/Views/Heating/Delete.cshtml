@@ -1,11 +1,11 @@
-﻿@model ControlMeasurements.Models.WaterMeasurement
+﻿@model ControlMeasurements.Models.HeatingMeasurement
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Delete";
 
 }
 
-<form asp-action="Edit">
+<form asp-action="Delete">
     <div asp-validation-summary="ModelOnly"></div>
     <input type="hidden" asp-for="Id" />
 
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-default" />
+        <input type="submit" value="Delete" class="btn btn-default" />
     </div>
 </form>
 
