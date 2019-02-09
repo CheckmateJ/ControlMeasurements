@@ -55,7 +55,7 @@ namespace ControlMeasurements
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Water}/{action=Index}/{id?}");
             });
         }
     }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
-    public class HomeController : Controller
+    public class WaterController : Controller
     {
         private MeasurementsContext _context;
 
-        public HomeController(MeasurementsContext context)
+        public WaterController(MeasurementsContext context)
         {
             _context = context;
         }
