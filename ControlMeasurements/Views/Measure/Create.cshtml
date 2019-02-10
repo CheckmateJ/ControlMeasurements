@@ -13,15 +13,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @Html.DropDownList("MeasurementType",
-                 new SelectList(Enum.GetValues(typeof(MeasurementType))),
-                 "Select MeasurementType",
-                  new { @class = "form-control"})
-                <br />
                 @Html.DropDownList("PlaceType",
-                     new SelectList(Enum.GetValues(typeof(PlaceType))),
-                 "Select PlaceType",
-                new { @class = "form-control"})
+        new SelectList(Enum.GetValues(typeof(PlaceType))),
+    "Select PlaceType",
+   new { @class = "form-control"})
+                <br />
+                @Html.DropDownList("MeasurementType",
+                       new SelectList(Enum.GetValues(typeof(MeasurementType))),
+                       "Select MeasurementType",
+                        new { @class = "form-control"})
                 <br />
                 <label asp-for="Value" class="control-label">Measurement</label>
                 <input asp-for="Value" class="form-control" />

@@ -14,11 +14,16 @@ namespace ControlMeasurements.Models
     {
         Kitchen,
         Bathroom,
-        LivingRoom
+        LivingRoom,
+        BedRoom,
+        ChildRoom,
+        Corridor
     }
+
     public enum MeasurementType
     {
         Water,
-        Heat
+        Heat,
+        Energy
     }
 }
