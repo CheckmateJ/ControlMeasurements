@@ -29,16 +29,16 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlaceType,MeasurementType,Value")] MeasurementCategory measurement)
+        public async Task<IActionResult> Create([Bind("PlaceType,MeasurementType,Value")] MeasurementCategory measurementCategory)
         {
             if (ModelState.IsValid)
             {
                 
-                _context.Add(measurement);
+                _context.Add(measurementCategory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurement);
+            return View(measurementCategory);
         }
 
         public async Task<IActionResult> Edit(Guid? id)
@@ -58,9 +58,9 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")] MeasurementCategory measurement)
+        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")] MeasurementCategory measurementCategory)
         {
-            if (Id != measurement.Id)
+            if (Id != measurementCategory.Id)
             {
                 return NotFound();
             }
@@ -69,12 +69,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Update(measurement);
+                    _context.Update(measurementCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(measurement.Id))
+                    if (!Exist(measurementCategory.Id))
                     {
                         return NotFound();
                     }
@@ -85,7 +85,7 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurement);
+            return View(measurementCategory);
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -104,9 +104,9 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")]MeasurementCategory measurement)
+        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")]MeasurementCategory measurementCategory)
         {
-            if (Id != measurement.Id)
+            if (Id != measurementCategory.Id)
             {
                 return NotFound();
             }
@@ -114,12 +114,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Remove(measurement);
+                    _context.Remove(measurementCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(measurement.Id))
+                    if (!Exist(measurementCategory.Id))
                     {
                         return NotFound();
                     }
@@ -130,7 +130,7 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurement);
+            return View(measurementCategory);
         }
 
         private bool Exist(Guid id)

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControlMeasurements.Migrations
 {
-    public partial class MeasurementCategory : Migration
+    public partial class Measure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,9 @@ namespace ControlMeasurements.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Place = table.Column<string>(nullable: true),
-                    Measurement = table.Column<int>(nullable: false)
+                    PlaceType = table.Column<int>(nullable: false),
+                    MeasurementType = table.Column<int>(nullable: false),
+                    Value = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

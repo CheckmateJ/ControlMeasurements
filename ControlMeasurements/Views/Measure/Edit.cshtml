@@ -4,18 +4,25 @@
     ViewData["Title"] = "Edit";
 
 }
-
+<h2>Edit</h2>
 <form asp-action="Edit">
     <div asp-validation-summary="ModelOnly"></div>
     <input type="hidden" asp-for="Id" />
 
     <div class="form-group">
-        <label asp-for="Place" class="control-label"></label>
-        <input asp-for="Place" class="form-control" />
-        <span asp-validation-for="Place" class="text-danger"></span>
-        <label asp-for="Measurement" class="control-label"></label>
-        <input asp-for="Measurement" class="form-control" />
-        <span asp-validation-for="Measurement" class="text-danger"></span>
+        @Html.DropDownList("MeasurementType",
+                new SelectList(Enum.GetValues(typeof(MeasurementType))),
+                "Select MeasurementType",
+                 new { @class = "form-control"})
+        <br />
+        @Html.DropDownList("PlaceType",
+             new SelectList(Enum.GetValues(typeof(PlaceType))),
+         "Select PlaceType",
+        new { @class = "form-control"})
+        <br />
+        <label asp-for="Value" class="control-label">Measurement</label>
+        <input asp-for="Value" class="form-control" />
+        <span asp-validation-for="MeasurementType" class="text-danger"></span>
     </div>
 
     <div class="form-group">

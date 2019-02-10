@@ -24,9 +24,11 @@ namespace ControlMeasurements.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Measurement");
+                    b.Property<int>("MeasurementType");
 
-                    b.Property<string>("Place");
+                    b.Property<int>("PlaceType");
+
+                    b.Property<int>("Value");
 
                     b.HasKey("Id");
 

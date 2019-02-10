@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlMeasurements.Migrations
 {
     [DbContext(typeof(MeasurementsContext))]
-    [Migration("20190209221521_MeasurementCategory")]
-    partial class MeasurementCategory
+    [Migration("20190210153656_Measure")]
+    partial class Measure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,11 @@ namespace ControlMeasurements.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Measurement");
+                    b.Property<int>("MeasurementType");
 
-                    b.Property<string>("Place");
+                    b.Property<int>("PlaceType");
+
+                    b.Property<int>("Value");
 
                     b.HasKey("Id");
 
