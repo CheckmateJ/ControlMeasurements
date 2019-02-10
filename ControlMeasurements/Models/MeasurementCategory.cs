@@ -1,14 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ControlMeasurements.Models
 {
     public class MeasurementCategory
     {
         public Guid Id { get; set; }
-        public string Place { get; set; }
-        public int Measurement { get; set; }
+        public PlaceType PlaceType { get; set; }
+        public MeasurementType MeasurementType { get; set; }
+        public int Value { get; set; }
+    }
+
+    public enum PlaceType
+    {
+        Kitchen,
+        Bathroom,
+        LivingRoom
+    }
+    public enum MeasurementType
+    {
+        Water,
+        Heat
     }
 }

@@ -14,9 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Place)
+               @Html.EnumDropDownListFor(Model=>Model.MeasurementType, "Select")
+                
 
-                @Html.DisplayNameFor(model => model.Measurement)
+                @Html.DropDownList(Enum .GetName())
             </th>
             <th></th>
         </tr>
