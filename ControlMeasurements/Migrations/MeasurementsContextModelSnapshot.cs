@@ -19,7 +19,7 @@ namespace ControlMeasurements.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ControlMeasurements.Models.MeasurementCategory", b =>
+            modelBuilder.Entity("ControlMeasurements.Models.Measurement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -32,7 +32,7 @@ namespace ControlMeasurements.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MeasurementsCategory");
+                    b.ToTable("Measurements");
                 });
 #pragma warning restore 612, 618
         }

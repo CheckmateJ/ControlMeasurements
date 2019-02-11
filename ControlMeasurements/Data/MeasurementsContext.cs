@@ -10,6 +10,6 @@ namespace ControlMeasurements.Data
             : base(options)
         { }
 
-        public DbSet<MeasurementCategory> MeasurementsCategory { get; set; }
+        public DbSet<Measurement> Measurements { get; set; }
     }
 }

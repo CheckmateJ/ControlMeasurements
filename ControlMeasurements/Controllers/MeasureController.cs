@@ -19,7 +19,7 @@ namespace ControlMeasurements.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MeasurementsCategory.ToListAsync());
+            return View(await _context.Measurements.ToListAsync());
         }
 
         public IActionResult Create()
@@ -29,16 +29,16 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlaceType,MeasurementType,Value")] MeasurementCategory measurementCategory)
+        public async Task<IActionResult> Create([Bind("PlaceType,MeasurementType,Value")] Measurement measurement)
         {
             if (ModelState.IsValid)
             {
                 
-                _context.Add(measurementCategory);
+                _context.Add(measurement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurementCategory);
+            return View(measurement);
         }
 
         public async Task<IActionResult> Edit(Guid? id)
@@ -48,19 +48,19 @@ namespace ControlMeasurements.Controllers
                 return NotFound();
             }
 
-            var measurementCategory = await _context.MeasurementsCategory.SingleOrDefaultAsync(m => m.Id == id);
-            if (measurementCategory == null)
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurement == null)
             {
                 return NotFound();
             }
-            return View(measurementCategory);
+            return View(measurement);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")] MeasurementCategory measurementCategory)
+        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")] Measurement measurement)
         {
-            if (Id != measurementCategory.Id)
+            if (Id != measurement.Id)
             {
                 return NotFound();
             }
@@ -69,12 +69,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Update(measurementCategory);
+                    _context.Update(measurement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(measurementCategory.Id))
+                    if (!Exist(measurement.Id))
                     {
                         return NotFound();
                     }
@@ -85,7 +85,7 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurementCategory);
+            return View(measurement);
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -94,19 +94,19 @@ namespace ControlMeasurements.Controllers
             {
                 return NotFound();
             }
-            var measurementCategory = await _context.MeasurementsCategory.SingleOrDefaultAsync(m => m.Id == id);
-            if (measurementCategory == null)
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurement == null)
             {
                 return NotFound();
             }
-            return View(measurementCategory);
+            return View(measurement);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")]MeasurementCategory measurementCategory)
+        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")]Measurement measurement)
         {
-            if (Id != measurementCategory.Id)
+            if (Id != measurement.Id)
             {
                 return NotFound();
             }
@@ -114,12 +114,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Remove(measurementCategory);
+                    _context.Remove(measurement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(measurementCategory.Id))
+                    if (!Exist(measurement.Id))
                     {
                         return NotFound();
                     }
@@ -130,12 +130,12 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(measurementCategory);
+            return View(measurement);
         }
 
         private bool Exist(Guid id)
         {
-            return _context.MeasurementsCategory.Any(x => x.Id == id);
+            return _context.Measurements.Any(x => x.Id == id);
         }
     }
 }

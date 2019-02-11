@@ -2,7 +2,7 @@
 
 namespace ControlMeasurements.Models
 {
-    public class MeasurementCategory
+    public class Measurement
     {
         public Guid Id { get; set; }
         public PlaceType PlaceType { get; set; }

@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControlMeasurements.Migrations
 {
-    public partial class Measure : Migration
+    public partial class Measurements : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MeasurementsCategory",
+                name: "Measurements",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -18,14 +18,14 @@ namespace ControlMeasurements.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasurementsCategory", x => x.Id);
+                    table.PrimaryKey("PK_Measurements", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MeasurementsCategory");
+                name: "Measurements");
         }
     }
 }
