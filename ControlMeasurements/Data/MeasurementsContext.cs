@@ -10,12 +10,6 @@ namespace ControlMeasurements.Data
             : base(options)
         { }
 
-        public DbSet<WaterMeasurement> WaterMeasurements { get; set; }
-        public DbSet<HeatingMeasurement> HeatingMeasurements { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<HeatingMeasurement>().ToTable("HeatingMeasurement");
-        }
+        public DbSet<Measurement> Measurements { get; set; }
     }
 }

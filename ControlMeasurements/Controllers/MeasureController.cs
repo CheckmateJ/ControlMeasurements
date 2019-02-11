@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
-    public class HeatingController : Controller
+    public class MeasureController : Controller
     {
         private MeasurementsContext _context;
 
-        public HeatingController(MeasurementsContext context)
+        public MeasureController(MeasurementsContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.HeatingMeasurements.ToListAsync());
+            return View(await _context.Measurements.ToListAsync());
         }
 
         public IActionResult Create()
@@ -29,15 +29,16 @@ namespace ControlMeasurements.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Place,Measurement")] HeatingMeasurement heating)
+        public async Task<IActionResult> Create([Bind("PlaceType,MeasurementType,Value")] Measurement measurement)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(heating);
+                
+                _context.Add(measurement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(heating);
+            return View(measurement);
         }
 
         public async Task<IActionResult> Edit(Guid? id)
@@ -47,19 +48,19 @@ namespace ControlMeasurements.Controllers
                 return NotFound();
             }
 
-            var heatingMeasurement = await _context.HeatingMeasurements.SingleOrDefaultAsync(m => m.Id == id);
-            if (heatingMeasurement == null)
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurement == null)
             {
                 return NotFound();
             }
-            return View(heatingMeasurement);
+            return View(measurement);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,Place,Measurement")] HeatingMeasurement heatingMeasurement)
+        public async Task<IActionResult> Edit(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")] Measurement measurement)
         {
-            if (Id != heatingMeasurement.Id)
+            if (Id != measurement.Id)
             {
                 return NotFound();
             }
@@ -68,12 +69,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Update(heatingMeasurement);
+                    _context.Update(measurement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(heatingMeasurement.Id))
+                    if (!Exist(measurement.Id))
                     {
                         return NotFound();
                     }
@@ -84,7 +85,7 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(heatingMeasurement);
+            return View(measurement);
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -93,19 +94,19 @@ namespace ControlMeasurements.Controllers
             {
                 return NotFound();
             }
-            var heatingMeasurement = await _context.HeatingMeasurements.SingleOrDefaultAsync(m => m.Id == id);
-            if (heatingMeasurement == null)
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurement == null)
             {
                 return NotFound();
             }
-            return View(heatingMeasurement);
+            return View(measurement);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,Place,Measurement")]HeatingMeasurement heatingMeasurement)
+        public async Task<IActionResult> Delete(Guid Id, [Bind("Id,PlaceType,MeasurementType,Value")]Measurement measurement)
         {
-            if (Id != heatingMeasurement.Id)
+            if (Id != measurement.Id)
             {
                 return NotFound();
             }
@@ -113,12 +114,12 @@ namespace ControlMeasurements.Controllers
             {
                 try
                 {
-                    _context.Remove(heatingMeasurement);
+                    _context.Remove(measurement);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Exist(heatingMeasurement.Id))
+                    if (!Exist(measurement.Id))
                     {
                         return NotFound();
                     }
@@ -129,12 +130,12 @@ namespace ControlMeasurements.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(heatingMeasurement);
+            return View(measurement);
         }
 
         private bool Exist(Guid id)
         {
-            return _context.HeatingMeasurements.Any(x => x.Id == id);
+            return _context.Measurements.Any(x => x.Id == id);
         }
     }
 }

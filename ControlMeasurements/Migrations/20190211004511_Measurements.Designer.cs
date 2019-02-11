@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlMeasurements.Migrations
 {
     [DbContext(typeof(MeasurementsContext))]
-    [Migration("20190207001929_MeasurementsUtility")]
-    partial class MeasurementsUtility
+    [Migration("20190211004511_Measurements")]
+    partial class Measurements
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,20 @@ namespace ControlMeasurements.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ControlMeasurements.Models.WaterMeasurement", b =>
+            modelBuilder.Entity("ControlMeasurements.Models.Measurement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Measurement");
+                    b.Property<int>("MeasurementType");
 
-                    b.Property<string>("Place");
+                    b.Property<int>("PlaceType");
+
+                    b.Property<int>("Value");
 
                     b.HasKey("Id");
 
-                    b.ToTable("WaterMeasurements");
+                    b.ToTable("Measurements");
                 });
 #pragma warning restore 612, 618
         }

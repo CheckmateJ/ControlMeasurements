@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190208215226_HeatingMeasurement.cs" />
     <Compile Remove="Migrations\20190208215226_HeatingMeasurement.Designer.cs" />
+    <Compile Remove="Migrations\20190209221521_MeasurementCategory.cs" />
+    <Compile Remove="Migrations\20190209221521_MeasurementCategory.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
