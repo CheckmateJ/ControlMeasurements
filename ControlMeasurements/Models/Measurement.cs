@@ -9,4 +9,4 @@ namespace ControlMeasurements.Models
         public MeasurementType MeasurementType { get; set; }
         public int Value { get; set; }
     }
-}
+} 
