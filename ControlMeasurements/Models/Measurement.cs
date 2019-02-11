@@ -9,21 +9,4 @@ namespace ControlMeasurements.Models
         public MeasurementType MeasurementType { get; set; }
         public int Value { get; set; }
     }
-
-    public enum PlaceType
-    {
-        Kitchen,
-        Bathroom,
-        LivingRoom,
-        BedRoom,
-        ChildRoom,
-        Corridor
-    }
-
-    public enum MeasurementType
-    {
-        Water,
-        Heat,
-        Energy
-    }
 }
