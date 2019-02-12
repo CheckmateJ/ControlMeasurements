@@ -1,7 +1,32 @@
-﻿
+﻿@model IEnumerable<ControlMeasurements.Models.Measurement>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceType)
+                @Html.DisplayNameFor(model => model.MeasurementType)
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>
