@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlMeasurements.Migrations
 {
     [DbContext(typeof(MeasurementsContext))]
-    [Migration("20190214183153_Date")]
-    partial class Date
+    [Migration("20190214214326_MeasurementDate")]
+    partial class MeasurementDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace ControlMeasurements.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("MeasurementDate");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int>("MeasurementType");
 

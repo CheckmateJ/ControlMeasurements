@@ -24,7 +24,7 @@ namespace ControlMeasurements.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("MeasurementDate");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int>("MeasurementType");
 
