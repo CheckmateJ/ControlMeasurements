@@ -1,7 +1,65 @@
-﻿
+﻿@model ControlMeasurements.ViewModels.HomeIndexViewModel
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WaterMeasurements)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.WaterMeasurements)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeatMeasurements)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.HeatMeasurements)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EnergyMeasurements)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EnergyMeasurements)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
