@@ -21,13 +21,13 @@ namespace ControlMeasurements.Controllers
             var result = new HomeIndexViewModel
             {
                 WaterMeasurements = measurements
-                                    .Where(x => x.MeasurementType == MeasurementType.Water).Take(2)
+                                    .Where(x => x.MeasurementType == MeasurementType.Water).Take(3).OrderByDescending(x=>x)
                                     .ToList(),
                 HeatMeasurements = measurements
-                                   .Where(x => x.MeasurementType == MeasurementType.Heat).Take(1)
+                                   .Where(x => x.MeasurementType == MeasurementType.Heat).Take(3).OrderByDescending(x => x)
                                    .ToList(),
                 EnergyMeasurements = measurements
-                                     .Where(x => x.MeasurementType == MeasurementType.Energy).Take(1)
+                                     .Where(x => x.MeasurementType == MeasurementType.Energy).Take(3).OrderByDescending(x => x)
                                      .ToList(),
             };
 
