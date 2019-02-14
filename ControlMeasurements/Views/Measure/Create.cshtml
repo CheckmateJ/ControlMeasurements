@@ -22,6 +22,9 @@
                               "Select MeasurementType",
                                new { @class = "form-control"})
                 <br />
+                <label asp-for="MeasurementDate" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.MeasurementDate)</label>
+                <input asp-for="MeasurementDate" class="form-control" />
+                <br />
                 <label asp-for="Value" class="control-label">Measurement</label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="MeasurementType" class="text-danger"></span>
