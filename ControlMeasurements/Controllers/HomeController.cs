@@ -27,8 +27,7 @@ namespace ControlMeasurements.Controllers
                                    .Where(x => x.MeasurementType == MeasurementType.Heat).OrderByDescending(x => x.Id).Take(3)
                                    .ToList(),
                 EnergyMeasurements = measurements
-                                     .Where(x => x.MeasurementType == MeasurementType.Energy).OrderByDescending(x => x.Id
-                                     ).Take(3)
+                                     .Where(x => x.MeasurementType == MeasurementType.Energy).OrderByDescending(x => x.Id).Take(3)
                                      .ToList(),
             };
             return View(result);
