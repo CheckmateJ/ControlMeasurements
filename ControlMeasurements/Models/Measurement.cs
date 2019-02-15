@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ControlMeasurements.Models
 {
@@ -8,5 +9,11 @@ namespace ControlMeasurements.Models
         public PlaceType PlaceType { get; set; }
         public MeasurementType MeasurementType { get; set; }
         public int Value { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime Date { get; set; }
+        public Measurement()
+        {
+            Date = DateTime.Now;
+        }
     }
-} 
+}
