@@ -14,7 +14,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.WaterMeasurements)
+        @foreach (var item in Model.Kitchen)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.Bathroom)
         {
             <tr>
                 <td>
@@ -33,7 +44,29 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.HeatMeasurements)
+        @foreach (var item in Model.LivingRoom)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.BedRoom)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.ChildRoom)
         {
             <tr>
                 <td>
@@ -52,7 +85,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.EnergyMeasurements)
+        @foreach (var item in Model.Corridor)
         {
             <tr>
                 <td>

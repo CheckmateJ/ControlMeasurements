@@ -7,8 +7,20 @@ namespace ControlMeasurements.ViewModels
     {
         public List<Measurement> WaterMeasurements { get; set; }
 
+        public List<Measurement> EnergyMeasurements { get; set; }
+
         public List<Measurement> HeatMeasurements { get; set; }
 
-        public List<Measurement> EnergyMeasurements { get; set; }
+        public List<Measurement> Kitchen { get; set; }
+
+        public List<Measurement> Bathroom { get; set; }
+
+        public List<Measurement> LivingRoom { get; set; }
+
+        public List<Measurement> BedRoom { get; set; }
+
+        public List<Measurement> ChildRoom { get; set; }
+
+        public List<Measurement> Corridor { get; set; }
     }
 }
