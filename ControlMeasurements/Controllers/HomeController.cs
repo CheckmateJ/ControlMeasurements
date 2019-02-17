@@ -20,16 +20,37 @@ namespace ControlMeasurements.Controllers
 
             var result = new HomeIndexViewModel
             {
-                WaterMeasurements = measurements
-                                    .Where(x => x.MeasurementType == MeasurementType.Water).OrderByDescending(x => x.Id).Take(3)
+                Kitchen = measurements
+                                    .Where(x => x.MeasurementType == MeasurementType.Water)
+                                    .Where(x => x.PlaceType == PlaceType.Kitchen)
+                                    .OrderByDescending(x => x.Id).Take(3)
                                     .ToList(),
-                HeatMeasurements = measurements
-                                   .Where(x => x.MeasurementType == MeasurementType.Heat).OrderByDescending(x => x.Id).Take(3)
+                Bathroom = measurements
+                                   .Where(x => x.MeasurementType == MeasurementType.Water)
+                                   .Where(x => x.PlaceType == PlaceType.Bathroom)
+                                   .OrderByDescending(x => x.Id).Take(3)
                                    .ToList(),
-                EnergyMeasurements = measurements
-                                     .Where(x => x.MeasurementType == MeasurementType.Energy).OrderByDescending(x => x.Id
-                                     ).Take(3)
+                LivingRoom = measurements
+                                     .Where(x => x.MeasurementType == MeasurementType.Heat)
+                                     .Where(x => x.PlaceType == PlaceType.LivingRoom)
+                                     .OrderByDescending(x => x.Id).Take(3)
                                      .ToList(),
+                BedRoom = measurements
+                                     .Where(x => x.MeasurementType == MeasurementType.Heat)
+                                     .Where(x => x.PlaceType == PlaceType.BedRoom)
+                                     .OrderByDescending(x => x.Id).Take(3)
+                                     .ToList(),
+                ChildRoom = measurements
+                                     .Where(x => x.MeasurementType == MeasurementType.Heat)
+                                     .Where(x => x.PlaceType == PlaceType.ChildRoom)
+                                     .OrderByDescending(x => x.Id).Take(3)
+                                     .ToList(),
+                Corridor = measurements
+                                     .Where(x => x.MeasurementType == MeasurementType.Energy)
+                                     .Where(x => x.PlaceType == PlaceType.Corridor)
+                                     .OrderByDescending(x => x.Id).Take(3)
+                                     .ToList(),
+
             };
             return View(result);
         }
