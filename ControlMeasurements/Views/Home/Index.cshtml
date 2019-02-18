@@ -14,23 +14,53 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Kitchen)
+        @foreach (var item in Model.KitchenHotWater)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }
     </tbody>
     <tbody>
-        @foreach (var item in Model.Bathroom)
+        @foreach (var item in Model.KitchenColdWater)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.BathroomHotWater)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.BathroomColdWater)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
+                    @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }
@@ -49,7 +79,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }
@@ -60,7 +92,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }
@@ -71,7 +105,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }
@@ -90,7 +126,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PlaceType)
+                    @Html.DisplayFor(modelItem => item.MeasurementType)
                     @Html.DisplayFor(modelItem => item.Value)
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }

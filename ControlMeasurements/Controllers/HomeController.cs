@@ -20,13 +20,23 @@ namespace ControlMeasurements.Controllers
 
             var result = new HomeIndexViewModel
             {
-                Kitchen = measurements
-                                    .Where(x => x.MeasurementType == MeasurementType.Water)
+                KitchenHotWater = measurements
+                                    .Where(x => x.MeasurementType == MeasurementType.HotWater)
                                     .Where(x => x.PlaceType == PlaceType.Kitchen)
                                     .OrderByDescending(x => x.Id).Take(3)
                                     .ToList(),
-                Bathroom = measurements
-                                   .Where(x => x.MeasurementType == MeasurementType.Water)
+                BathroomHotWater = measurements
+                                   .Where(x => x.MeasurementType == MeasurementType.HotWater)
+                                   .Where(x => x.PlaceType == PlaceType.Bathroom)
+                                   .OrderByDescending(x => x.Id).Take(3)
+                                   .ToList(),
+                KitchenColdWater = measurements
+                                    .Where(x => x.MeasurementType == MeasurementType.ColdWater)
+                                    .Where(x => x.PlaceType == PlaceType.Kitchen)
+                                    .OrderByDescending(x => x.Id).Take(3)
+                                    .ToList(),
+                BathroomColdWater = measurements
+                                   .Where(x => x.MeasurementType == MeasurementType.ColdWater)
                                    .Where(x => x.PlaceType == PlaceType.Bathroom)
                                    .OrderByDescending(x => x.Id).Take(3)
                                    .ToList(),
@@ -50,7 +60,6 @@ namespace ControlMeasurements.Controllers
                                      .Where(x => x.PlaceType == PlaceType.Corridor)
                                      .OrderByDescending(x => x.Id).Take(3)
                                      .ToList(),
-
             };
             return View(result);
         }
