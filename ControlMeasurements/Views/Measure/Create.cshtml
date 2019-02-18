@@ -12,19 +12,17 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
-                   @Html.DropDownList("PlaceType",
-                  new SelectList(Enum.GetValues(typeof(PlaceType))),
-                  "Select PlaceType",
-                 new { @class = "form-control"})
+                @Html.DropDownList("PlaceType",
+               new SelectList(Enum.GetValues(typeof(PlaceType))),
+               new { @class = "form-control"})
                 <br />
-                 @Html.DropDownList("MeasurementType",
-                              new SelectList(Enum.GetValues(typeof(MeasurementType))),
-                              "Select MeasurementType",
-                               new { @class = "form-control"})
-                 <br />
-                 <div class="form-group">
-             @Html.LabelFor(model => model.Date, new { @class = "form-control", style = "width:185px;background:E1EBF9;", @readonly = "readonly" })
-                 </div>
+                @Html.DropDownList("MeasurementType",
+                             new SelectList(Enum.GetValues(typeof(MeasurementType))),
+                             new { @class = "form-control"})
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, new { @class = "form-control", style = "width:185px;background:E1EBF9;", @readonly = "readonly" })
+                </div>
                 <br />
                 <label asp-for="Value" class="control-label">Measurement</label>
                 <input asp-for="Value" class="form-control" />
