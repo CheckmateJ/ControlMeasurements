@@ -1,4 +1,4 @@
-﻿using ControlMeasurements.Models;
+﻿  using ControlMeasurements.Models;
 using System.Collections.Generic;
 
 namespace ControlMeasurements.ViewModels
@@ -11,9 +11,13 @@ namespace ControlMeasurements.ViewModels
 
         public List<Measurement> HeatMeasurements { get; set; }
 
-        public List<Measurement> Kitchen { get; set; }
+        public List<Measurement> KitchenHotWater { get; set; }
 
-        public List<Measurement> Bathroom { get; set; }
+        public List<Measurement> BathroomHotWater { get; set; }
+
+        public List<Measurement> KitchenColdWater { get; set; }
+
+        public List<Measurement> BathroomColdWater { get; set; }
 
         public List<Measurement> LivingRoom { get; set; }
 

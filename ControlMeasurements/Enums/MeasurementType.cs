@@ -1,6 +1,7 @@
 ﻿public enum MeasurementType
 {
-    Water,
+    HotWater,
+    ColdWater,
     Heat,
     Energy
 }
