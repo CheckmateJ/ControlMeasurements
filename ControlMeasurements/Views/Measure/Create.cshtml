@@ -14,13 +14,11 @@
             <div>
                 @Html.DropDownList("PlaceType",
                new SelectList(Enum.GetValues(typeof(PlaceType))),
-               "Select PlaceType",
-              new { @class = "form-control"})
+               new { @class = "form-control"})
                 <br />
                 @Html.DropDownList("MeasurementType",
                              new SelectList(Enum.GetValues(typeof(MeasurementType))),
-                             "Select MeasurementType",
-                              new { @class = "form-control"})
+                             new { @class = "form-control"})
                 <br />
                 <div class="form-group">
                     @Html.LabelFor(model => model.Date, new { @class = "form-control", style = "width:185px;background:E1EBF9;", @readonly = "readonly" })
