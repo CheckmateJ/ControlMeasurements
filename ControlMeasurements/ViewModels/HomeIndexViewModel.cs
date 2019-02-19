@@ -27,8 +27,6 @@ namespace ControlMeasurements.ViewModels
 
         public List<Measurement> Corridor { get; set; }
 
-        public List<Measurement> Value { get; set; }
-
         public double KitchenHotWaterMeasurementChange { get; set; }
 
         public double KitchenColdWaterMeasurementChange { get; set; }

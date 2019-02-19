@@ -8,9 +8,15 @@
     <thead>
         <tr>
             <th>
-                <p>@Model.KitchenHotWaterMeasurementChange</p>  
-                <p>@Model.KitchenColdWaterMeasurementChange</p>
-                @Html.DisplayNameFor(model => model.WaterMeasurements)
+                <p>Kitchen hot water measurement change = @Model.KitchenHotWaterMeasurementChange</p>
+                <p>Kitchen cold water measurement change = @Model.KitchenColdWaterMeasurementChange</p>
+                <p>Bathroom hot water measurement change = @Model.BathroomHotWaterMeasurementChange</p>
+                <p>Bathroom cold water measurement change = @Model.BathroomColdWaterMeasurementChange</p>
+                <p>Living room measurement chagne @Model.LivingRoomMeasurementChange</p>
+                <p>Bed room measurement change = @Model.BedRoomMeasurementChange</p>
+                <p>Child room measurement change = @Model.ChildRoomMeasurementChange</p>
+                <p>Corridor measurement change @Model.CorridorMeasurementChange</p>
+                   @Html.DisplayNameFor(model => model.WaterMeasurements)
             </th>
             <th></th>
         </tr>
