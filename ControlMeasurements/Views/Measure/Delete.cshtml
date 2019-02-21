@@ -4,7 +4,8 @@
     ViewData["Title"] = "Delete";
 
 }
-<h2>Delete</h2>
+<h4>Delete</h4>
+<br />
 <form asp-action="Delete">
     <div asp-validation-summary="ModelOnly"></div>
     <input type="hidden" asp-for="Id" />
@@ -24,9 +25,9 @@
         <span asp-validation-for="MeasurementType" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure you want to delete this measurement?')"/>
+        <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this measurement?')"/>
     </div>
 </form>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" role="button">Back to List</a>
 </div>
