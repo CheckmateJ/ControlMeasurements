@@ -42,3 +42,12 @@ body {
 .nav li a{
      color: white;
  }
+.card{
+    float:left;
+    margin:5px;
+    text-align:center;
+}
+.square{
+    width:150px;
+    float:left;
+}

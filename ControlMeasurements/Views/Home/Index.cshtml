@@ -3,12 +3,76 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<table>
+<div class="card" style="width: 23rem;">
+    <div class="card-body">
+        <div class="Title" style="width: 300px;">
+            <h5 class="card-title" style="text-align:center;">Hot Water</h5>
+        </div>
+        <div class="square">
+            <p><strong>Kitchen</strong></p>
+         <p>
+            @foreach (var item in Model.KitchenHotWater)
+            {
+                @Html.DisplayFor(modelItem => item.Value)
+                <br />
+                <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                <br />
+            }
+         </p>
+        </div>
+        <div class="square">
+            <p><strong>Bathroom</strong></p>
+            <p>
+                @foreach (var item in Model.BathroomHotWater)
+                {
+                    @Html.DisplayFor(modelItem => item.Value)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div class="card" style="width: 23rem;">
+    <div class="card-body">
+        <div class="Title" style="width: 300px;">
+            <h5 class="card-title" style="text-align:center;">Cold Water</h5>
+        </div>
+        <div class="square">
+            <p><strong>Kitchen</strong></p>
+            <p>
+                @foreach (var item in Model.KitchenColdWater)
+                {
+                    @Html.DisplayFor(modelItem => item.Value)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+        <div class="square">
+            <p><strong>Bathroom</strong></p>
+            <p>
+                @foreach (var item in Model.BathroomColdWater)
+                {
+                    @Html.DisplayFor(modelItem => item.Value)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+    </div>
+</div>
+<div style="clear:both;"></div>
+@*<table>
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.WaterMeasurements)
+
             </th>
             <th></th>
         </tr>
@@ -133,4 +197,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
