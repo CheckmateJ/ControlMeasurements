@@ -1,4 +1,4 @@
-﻿  using ControlMeasurements.Models;
+﻿using ControlMeasurements.Models;
 using System.Collections.Generic;
 
 namespace ControlMeasurements.ViewModels
@@ -26,5 +26,21 @@ namespace ControlMeasurements.ViewModels
         public List<Measurement> ChildRoom { get; set; }
 
         public List<Measurement> Corridor { get; set; }
+
+        public double KitchenHotWaterMeasurementChange { get; set; }
+
+        public double KitchenColdWaterMeasurementChange { get; set; }
+
+        public double BathroomHotWaterMeasurementChange { get; set; }
+
+        public double BathroomColdWaterMeasurementChange { get; set; }
+
+        public double LivingRoomMeasurementChange { get; set; }
+
+        public double BedRoomMeasurementChange { get; set; }
+
+        public double ChildRoomMeasurementChange { get; set; }
+
+        public double CorridorMeasurementChange { get; set; }
     }
 }
