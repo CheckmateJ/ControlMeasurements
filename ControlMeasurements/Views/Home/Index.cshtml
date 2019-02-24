@@ -3,22 +3,22 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="card" style="width: 23rem;">
+<div class="card" style="width: 350px;">
     <div class="card-body">
         <div class="Title" style="width: 300px;">
             <h5 class="card-title" style="text-align:center;">Hot Water</h5>
         </div>
         <div class="square">
             <p><strong>Kitchen</strong></p>
-         <p>
-            @foreach (var item in Model.KitchenHotWater)
-            {
-                @Html.DisplayFor(modelItem => item.Value)
-                <br />
-                <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                <br />
-            }
-         </p>
+            <p>
+                @foreach (var item in Model.KitchenHotWater)
+                {
+                    @Html.DisplayFor(modelItem => item.Value)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
         </div>
         <div class="square">
             <p><strong>Bathroom</strong></p>
@@ -32,10 +32,9 @@
                 }
             </p>
         </div>
-        <div style="clear:both;"></div>
     </div>
 </div>
-<div class="card" style="width: 23rem;">
+<div class="card" style="width: 350px;">
     <div class="card-body">
         <div class="Title" style="width: 300px;">
             <h5 class="card-title" style="text-align:center;">Cold Water</h5>
@@ -66,135 +65,67 @@
         </div>
     </div>
 </div>
+<div class="card" style="width: 200px;">
+    <div class="card-body">
+        <div class="Title" style="width: 150px;">
+            <h5 class="card-title" style="text-align:center;">Energy</h5>
+        </div>
+        <div class="square-1">
+            <p><strong>Corridor</strong></p>
+            <p>
+                @foreach (var item in Model.Corridor)
+                {
+                    @Html.DisplayFor(modelItem => item.Value)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+    </div>
+</div>
 <div style="clear:both;"></div>
-@*<table>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.WaterMeasurements)
-
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.KitchenHotWater)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
+<div class="card" style="width: 500px;">
+    <div class="card-body">
+        <div class="Title" style="width: 450px;">
+            <h5 class="card-title" style="text-align:center;">Heat</h5>
+        </div>
+        <div class="square-1">
+            <p><strong>Living Room</strong></p>
+            <p>
+                @foreach (var item in Model.LivingRoom)
+                {
                     @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tbody>
-        @foreach (var item in Model.KitchenColdWater)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+        <div class="square-1">
+            <p><strong>Bedroom</strong></p>
+            <p>
+                @foreach (var item in Model.BedRoom)
+                {
                     @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tbody>
-        @foreach (var item in Model.BathroomHotWater)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+        <div class="square-1">
+            <p><strong>Child Room</strong></p>
+            <p>
+                @foreach (var item in Model.ChildRoom)
+                {
                     @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tbody>
-        @foreach (var item in Model.BathroomColdWater)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.HeatMeasurements)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.LivingRoom)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tbody>
-        @foreach (var item in Model.BedRoom)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tbody>
-        @foreach (var item in Model.ChildRoom)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EnergyMeasurements)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Corridor)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
+                    <br />
+                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
+                    <br />
+                }
+            </p>
+        </div>
+    </div>
+</div>
+<div style="clear:both;"></div>
