@@ -4,20 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <br />
+    <div class="button-Create" style="text-align:center;">
+        <a class="btn btn-outline-success btn-sm" asp-action="Create" role="button">Create New</a>
+    </div>
 </p>
-
 <table>
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PlaceType)
-                @Html.DisplayNameFor(model => model.MeasurementType)
-                @Html.DisplayNameFor(model => model.Value)
-                @Html.DisplayNameFor(model => model.Date)
+                <div class="display-window">@Html.DisplayNameFor(model => model.PlaceType)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.MeasurementType)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.Value)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.Date)</div>
             </th>
             <th></th>
         </tr>
@@ -27,14 +27,14 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PlaceType)
-                    @Html.DisplayFor(modelItem => item.MeasurementType)
-                    @Html.DisplayFor(modelItem => item.Value)
-                    @Html.DisplayFor(modelItem => item.Date)
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.PlaceType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Value)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
                 </td>
             </tr>
         }
