@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                <div class="table">@Html.DisplayNameFor(model => model.PlaceType)</div>
-                <div class="table">@Html.DisplayNameFor(model => model.MeasurementType)</div>
-                <div class="table">@Html.DisplayNameFor(model => model.Value)</div>
-                <div class="table">@Html.DisplayNameFor(model => model.Date)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.PlaceType)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.MeasurementType)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.Value)</div>
+                <div class="display-window">@Html.DisplayNameFor(model => model.Date)</div>
             </th>
             <th></th>
         </tr>
@@ -27,10 +27,10 @@
         {
             <tr>
                 <td>
-                    <div class="table">@Html.DisplayFor(modelItem => item.PlaceType)</div>
-                    <div class="table">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
-                    <div class="table">@Html.DisplayFor(modelItem => item.Value)</div>
-                    <div class="table">@Html.DisplayFor(modelItem => item.Date)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.PlaceType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Value)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
                 </td>
                 <td>
                     <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>

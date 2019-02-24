@@ -36,13 +36,13 @@ body {
     }
 }
 
-.nav {
-    background-color: gray;
+.navbar {
+    background-color: lightgray;
 }
 
-    .nav li a {
-        color: white;
-    }
+.nav li a {
+    color: white;
+}
 
 .card {
     float: left;
@@ -63,8 +63,12 @@ body {
     float: left;
 }
 
-.table {
+.display-window {
     float: left;
     text-align: center;
     width: 220px;
+}
+
+#navbarNav a {
+    color: black;
 }
