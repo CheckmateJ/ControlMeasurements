@@ -1,131 +1,34 @@
-﻿@model ControlMeasurements.ViewModels.HomeIndexViewModel
+﻿@model List<ControlMeasurements.ViewModels.MeasurementViewModel>
 
 @{
     ViewData["Title"] = "Index";
 }
-<div class="card" style="width: 350px;">
-    <div class="card-body">
-        <div class="Title" style="width: 300px;">
-            <h5 class="card-title" style="text-align:center;">Hot Water</h5>
+
+
+<div class="row">
+    @foreach (var measurementViewModel in Model)
+    {
+        <div class="col-md-4">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@measurementViewModel.MeasurementType</h5>
+
+                    @foreach (var measurementView in @measurementViewModel.MeasurementViews)
+                    {
+
+                        <small>@measurementView.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
+                        <strong>@measurementView.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
+                        <sup><strong>@measurementView.Change?.ToString("0.00")</strong></sup>
+                        <br />
+                    }
+
+                </div>
+            </div>
+
         </div>
-        <div class="square">
-            <p><strong>Kitchen</strong></p>
-            <p>
-                @foreach (var item in Model.KitchenHotWater)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-        <div class="square">
-            <p><strong>Bathroom</strong></p>
-            <p>
-                @foreach (var item in Model.BathroomHotWater)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-    </div>
+    }
 </div>
-<div class="card" style="width: 350px;">
-    <div class="card-body">
-        <div class="Title" style="width: 300px;">
-            <h5 class="card-title" style="text-align:center;">Cold Water</h5>
-        </div>
-        <div class="square">
-            <p><strong>Kitchen</strong></p>
-            <p>
-                @foreach (var item in Model.KitchenColdWater)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-        <div class="square">
-            <p><strong>Bathroom</strong></p>
-            <p>
-                @foreach (var item in Model.BathroomColdWater)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-    </div>
-</div>
-<div class="card" style="width: 200px;">
-    <div class="card-body">
-        <div class="Title" style="width: 150px;">
-            <h5 class="card-title" style="text-align:center;">Energy</h5>
-        </div>
-        <div class="square-1">
-            <p><strong>Corridor</strong></p>
-            <p>
-                @foreach (var item in Model.Corridor)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-    </div>
-</div>
-<div style="clear:both;"></div>
-<div class="card" style="width: 500px;">
-    <div class="card-body">
-        <div class="Title" style="width: 450px;">
-            <h5 class="card-title" style="text-align:center;">Heat</h5>
-        </div>
-        <div class="square-1">
-            <p><strong>Living Room</strong></p>
-            <p>
-                @foreach (var item in Model.LivingRoom)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-        <div class="square-1">
-            <p><strong>Bedroom</strong></p>
-            <p>
-                @foreach (var item in Model.BedRoom)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-        <div class="square-1">
-            <p><strong>Child Room</strong></p>
-            <p>
-                @foreach (var item in Model.ChildRoom)
-                {
-                    @Html.DisplayFor(modelItem => item.Value)
-                    <br />
-                    <small>@Html.DisplayFor(modelItem => item.Date)</small>
-                    <br />
-                }
-            </p>
-        </div>
-    </div>
-</div>
-<div style="clear:both;"></div>
+
+
+
