@@ -19,17 +19,22 @@ namespace ControlMeasurements.Controllers
             var measurements = _context.Measurements;
 
             var measurementViews = measurements
-                                    .GroupBy(x => x.MeasurementType) // group by measurement type
+                                    .GroupBy(x => new
+                                    {
+                                        x.MeasurementType,
+                                        x.PlaceType
+                                    }) // group by measurement type
                                     .Select(g => new MeasurementViewModel // create a new MeasurementViewModel from each group
                                     {
-                                        MeasurementType = g.Key,
+                                        MeasurementType = g.Key.MeasurementType,
+                                        PlaceType = g.Key.PlaceType,
                                         MeasurementViews = g.OrderByDescending(x => x.Date)
                                                             .Take(3) // take three most recent measurements
                                                             .Select(x => new MeasurementView // create a new MeasurementView from every Measurement (without "Change" field for now)
                                                             {
                                                                 Measurement = x
                                                             })
-                                                            .ToList()
+                                                            .ToList(),
                                     }).ToList();
 
             foreach (var measurementView in measurementViews)
@@ -42,6 +47,5 @@ namespace ControlMeasurements.Controllers
 
             return View(measurementViews);
         }
-
     }
 }

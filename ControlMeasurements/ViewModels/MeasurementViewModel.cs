@@ -8,6 +8,8 @@ namespace ControlMeasurements.ViewModels
         public MeasurementType MeasurementType { get; set; }
 
         public List<MeasurementView> MeasurementViews { get; set; }
+
+        public PlaceType PlaceType { get; set; }
     }
 
     public class MeasurementView

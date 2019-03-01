@@ -4,7 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-
 <div class="row">
     @foreach (var measurementViewModel in Model)
     {
@@ -12,23 +11,23 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">@measurementViewModel.MeasurementType</h5>
+                    <h5 class="card-title">@measurementViewModel.PlaceType</h5>
+                    <p>@measurementViewModel.MeasurementType</p>
 
                     @foreach (var measurementView in @measurementViewModel.MeasurementViews)
                     {
 
-                        <small>@measurementView.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
-                        <strong>@measurementView.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
+                        <strong><text>Measurement = </text>@measurementView.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
                         <sup><strong>@measurementView.Change?.ToString("0.00")</strong></sup>
                         <br />
-                    }
+                        <div style="line-height:1px;">
+                            <small>@measurementView.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
+                        </div>
 
+                        <br />
+                    }
                 </div>
             </div>
-
         </div>
     }
 </div>
-
-
-
