@@ -4,30 +4,33 @@
     ViewData["Title"] = "Index";
 }
 
-@*<div class="row">
-    @foreach (var measurementViewModel in Model)
+<div class="row">
+    @foreach (var CardViewModel in Model)
     {
         <div class="col-md-4">
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">@measurementViewModel.PlaceType</h5>
-                    <p>@measurementViewModel.MeasurementType</p>
+                    <h5 class="card-title">@CardViewModel.MeasurementType</h5>
+                   
 
-                    @foreach (var measurementView in @measurementViewModel.MeasurementViews)
+                    @foreach (var measurementView in @CardViewModel.Subcards)
                     {
+                        <p>@measurementView.PlaceType</p>
+                        @foreach (var measurement in measurementView.MeasurementViews)
+                        {
+                          <strong><text>Measurement = </text>@measurement.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
+                            <sup><strong>@measurement.Change?.ToString("0.00")</strong></sup>
+                         <br />
+                         <div style="line-height:1px;">
+                            <small>@measurement.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
+                          </div>
 
-                        <strong><text>Measurement = </text>@measurementView.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
-                        <sup><strong>@measurementView.Change?.ToString("0.00")</strong></sup>
-                        <br />
-                        <div style="line-height:1px;">
-                            <small>@measurementView.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
-                        </div>
-
-                        <br />
-                    }
+                         <br />
+                        }
+                     }
                 </div>
             </div>
         </div>
     }
-</div>*@
+</div>

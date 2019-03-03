@@ -52,7 +52,7 @@ body {
     display: inline-block;
 }
 
-.square {
+/*.square {
     width: 150px;
     float: left;
     line-height: 1;
@@ -61,7 +61,7 @@ body {
 .square-1 {
     width: 150px;
     float: left;
-}
+}*/
 
 .display-window {
     float: left;
@@ -71,4 +71,8 @@ body {
 
 #navbarNav a {
     color: black;
+}
+.sub-cards{
+    float:left;
+    width:800px;
 }
