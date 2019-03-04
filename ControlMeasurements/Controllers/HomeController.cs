@@ -46,6 +46,9 @@ namespace ControlMeasurements.Controllers
                     for (int i = 0; i < subcard.MeasurementViews.Count - 1; i++)
                     {
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
+                        subcard.Sum = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
+                        subcard.Count += subcard.Sum;
+
                     }
                 }
             }
