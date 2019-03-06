@@ -2,6 +2,7 @@
 using ControlMeasurements.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
@@ -17,6 +18,7 @@ namespace ControlMeasurements.Controllers
         public IActionResult Index()
         {
             var measurements = _context.Measurements;
+            var amount = new Card();
 
             var cards = measurements
                                 .GroupBy(x => x.MeasurementType)
@@ -32,7 +34,7 @@ namespace ControlMeasurements.Controllers
                                                                          .Select(m => new MeasurementView
                                                                          {
                                                                              Measurement = m
-                                                                         })
+                                                                         }).Where(m=>m.Measurement.MeasurementType == MeasurementType.Heat)
                                                                          .ToList()
                                                 })
                                                 .ToList()
@@ -48,11 +50,16 @@ namespace ControlMeasurements.Controllers
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
                         subcard.Sum = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
                         subcard.Count += subcard.Sum;
-
+                       subcard.Price = subcard.Count * 2;
+                        
                     }
                 }
             }
+
+            
+            
             return View(cards);
         }
+        
     }
 }

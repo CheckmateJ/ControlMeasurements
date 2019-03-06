@@ -19,6 +19,8 @@ namespace ControlMeasurements.ViewModels
         public double Sum { get; set; }
 
         public double Count { get; set; }
+
+        public double Price { get; set; }
     }
 
     public class MeasurementView

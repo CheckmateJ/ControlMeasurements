@@ -15,9 +15,13 @@
                     @foreach (var measurementView in @CardViewModel.Subcards)
                     {
                         <p>@measurementView.PlaceType</p>
+                       
+                           
+                        
 
                         @foreach (var measurement in measurementView.MeasurementViews)
                         {
+
                             <strong><text>Measurement = </text>@measurement.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
                             <sup><strong>@measurement.Change?.ToString("0.00")</strong></sup>
                             <br />
@@ -41,6 +45,7 @@
                     foreach (var sum in card.Subcards)
                     {
                         <p><text> </text> @Html.DisplayFor(item => sum.PlaceType) = @sum.Count</p>
+                        <p>@sum.Price</p>
                     }
                 }
                 <p></p>
@@ -48,3 +53,5 @@
         </div>
     </div>
 </div>
+
+
