@@ -11,5 +11,6 @@ namespace ControlMeasurements.Data
         { }
 
         public DbSet<Measurement> Measurements { get; set; }
+        public DbSet<Amount> Amounts { get; set; }
     }
 }

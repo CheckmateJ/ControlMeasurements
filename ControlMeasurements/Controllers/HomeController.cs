@@ -50,7 +50,7 @@ namespace ControlMeasurements.Controllers
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
                         subcard.Sum = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
                         subcard.Count += subcard.Sum;
-                       subcard.Price = subcard.Count * 2;
+                        subcard.Price = subcard.Count;
                         
                     }
                 }
