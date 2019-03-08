@@ -19,7 +19,7 @@ namespace ControlMeasurements.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Measurements.ToListAsync());
+            return View(await _context.Amounts.ToListAsync());
         }
         public IActionResult Create()
         {
@@ -47,12 +47,12 @@ namespace ControlMeasurements.Controllers
                 return NotFound();
             }
 
-            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
-            if (measurement == null)
+            var amount = await _context.Amounts.SingleOrDefaultAsync(m => m.Id == id);
+            if (amount == null)
             {
                 return NotFound();
             }
-            return View(measurement);
+            return View(amount);
         }
 
         [HttpPost]
@@ -93,7 +93,7 @@ namespace ControlMeasurements.Controllers
             {
                 return NotFound();
             }
-            var amount = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            var amount = await _context.Amounts.SingleOrDefaultAsync(m => m.Id == id);
             if (amount == null)
             {
                 return NotFound();
