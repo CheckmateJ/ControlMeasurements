@@ -17,9 +17,43 @@ namespace ControlMeasurements.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.Measurements.ToListAsync());
+            
+            ViewBag.PlaceSortParm = String.IsNullOrEmpty(sortOrder) ? "PlaceType" : "";
+            ViewBag.MeasurementType = sortOrder == "MeasurementType" ? "MeasurementType_desc" : "MeasurementType";
+            ViewBag.ValueSortParm = sortOrder == "Value" ? "Value_desc" : "Value";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
+            var measurement = from m in _context.Measurements
+                           select m;
+            switch (sortOrder)
+            {
+                case "PlaceType":
+                    measurement = measurement.OrderByDescending(s => s.PlaceType);
+                    break;
+                case "MeasurementType":
+                    measurement = measurement.OrderBy(s => s.MeasurementType);
+                    break;
+                case "MeasurementType_desc":
+                    measurement = measurement.OrderByDescending(s => s.MeasurementType);
+                    break;
+                case "Value":
+                    measurement = measurement.OrderBy(s => s.Value);
+                    break;
+                case "Value_desc":
+                    measurement = measurement.OrderByDescending(s => s.Value);
+                    break;
+                case "Date":
+                    measurement = measurement.OrderBy(s => s.Date);
+                    break;
+                case "Date_desc":
+                    measurement = measurement.OrderByDescending(s => s.Date);
+                    break;
+                default:
+                    measurement = measurement.OrderBy(s => s.PlaceType);
+                    break;
+            }
+            return View(measurement.ToList());
         }
 
         public IActionResult Create()
