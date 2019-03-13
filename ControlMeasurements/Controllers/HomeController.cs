@@ -1,8 +1,9 @@
 ﻿using ControlMeasurements.Data;
+using ControlMeasurements.Models;
 using ControlMeasurements.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ControlMeasurements.Controllers
 {
@@ -18,7 +19,29 @@ namespace ControlMeasurements.Controllers
         public IActionResult Index()
         {
             var measurements = _context.Measurements;
-            var amount = new Card();
+            var amounts = _context.Amounts;
+
+            var prices = amounts
+                         .GroupBy(x => x.MeasurementType)
+                         .Select(g => new Card
+                         {
+
+                             MeasurementType = g.Key,
+                             Subcards = g.Select(p => new Subcard
+                             {
+                                Cost = g.OrderByDescending(x=>x.Date)
+                                        .Take(2)
+                                        .Select(c=> new Amounts
+                                        {
+                                            Amount = c
+                                        })
+                                        .ToList()
+                             
+                             })
+                             .ToList()
+                         })
+                         .ToList();
+           
 
             var cards = measurements
                                 .GroupBy(x => x.MeasurementType)
@@ -34,7 +57,7 @@ namespace ControlMeasurements.Controllers
                                                                          .Select(m => new MeasurementView
                                                                          {
                                                                              Measurement = m
-                                                                         }).Where(m=>m.Measurement.MeasurementType == MeasurementType.Heat)
+                                                                         })
                                                                          .ToList()
                                                 })
                                                 .ToList()
@@ -48,18 +71,23 @@ namespace ControlMeasurements.Controllers
                     for (int i = 0; i < subcard.MeasurementViews.Count - 1; i++)
                     {
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                        subcard.Sum = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                        subcard.Count += subcard.Sum;
-                        subcard.Price = subcard.Count;
-                        
-                    }
-                }
+                        subcard.Sum += subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
+                       
+
+                    } 
+                };
             }
 
-            
+            foreach (var price in prices)
+            {
+                foreach(var sbcard in price.Subcards)
+                {
+                    for (int i = 0; i < sbcard.Cost.Count; i++)
+                        sbcard.Cost[i].Total = sbcard.Cost[i].Amount.Price * sbcard.Sum;
+                }
+            }
             
             return View(cards);
         }
-        
     }
 }

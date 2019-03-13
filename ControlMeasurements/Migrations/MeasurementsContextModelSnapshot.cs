@@ -26,6 +26,8 @@ namespace ControlMeasurements.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("MeasurementType");
+
                     b.Property<double>("Price");
 
                     b.HasKey("Id");

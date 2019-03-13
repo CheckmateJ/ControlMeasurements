@@ -4,6 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
+<div>
+
+
+    @foreach (var view in Model)
+    {
+        foreach(var item in view.Subcards)
+        {
+
+        
+                 @foreach (var price in item.Cost)
+                 {
+                          <p>@price.Total</p>
+                 }
+        }
+    }
+</div>
 <div class="row">
     @foreach (var CardViewModel in Model)
     {
@@ -15,9 +31,9 @@
                     @foreach (var measurementView in @CardViewModel.Subcards)
                     {
                         <p>@measurementView.PlaceType</p>
-                       
-                           
-                        
+
+                     
+
 
                         @foreach (var measurement in measurementView.MeasurementViews)
                         {
@@ -44,8 +60,8 @@
                     <p><strong>@Html.DisplayFor(item => card.MeasurementType)</strong></p>
                     foreach (var sum in card.Subcards)
                     {
-                        <p><text> </text> @Html.DisplayFor(item => sum.PlaceType) = @sum.Count</p>
-                        <p>@sum.Price</p>
+                        <p><text> </text> @Html.DisplayFor(item => sum.PlaceType) = @sum.Sum</p>
+                       <p>@sum.Cost</p>
                     }
                 }
                 <p></p>
