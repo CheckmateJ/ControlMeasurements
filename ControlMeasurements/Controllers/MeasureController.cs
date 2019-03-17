@@ -17,7 +17,7 @@ namespace ControlMeasurements.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, int? page)
         {
             
             ViewBag.PlaceSortParm = String.IsNullOrEmpty(sortOrder) ? "PlaceType" : "";
@@ -28,7 +28,7 @@ namespace ControlMeasurements.Controllers
                            select m;
             switch (sortOrder)
             {
-                case "PlaceType":
+                case "PlaceType": 
                     measurement = measurement.OrderByDescending(s => s.PlaceType);
                     break;
                 case "MeasurementType":
@@ -53,7 +53,8 @@ namespace ControlMeasurements.Controllers
                     measurement = measurement.OrderBy(s => s.PlaceType);
                     break;
             }
-            return View(measurement.ToList());
+            int pageSize = 10;
+            return View(await PaginatedList<Measurement>.CreateAsync(measurement.AsNoTracking(), page ?? 1, pageSize));
         }
 
         public IActionResult Create()

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ControlMeasurements.Models.Measurement>
+﻿@model PaginatedList<ControlMeasurements.Models.Measurement>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,33 +10,51 @@
         <a class="btn btn-outline-success btn-sm" asp-action="Create" role="button">Create New</a>
     </div>
 </p>
-    <table>
-        <thead>
+<table>
+    <thead>
+        <tr>
+
+            <th>
+                <div class="display-window">@Html.ActionLink("Place Type", "Index", new { sortOrder = ViewBag.PlaceSortParm })</div>
+                <div class="display-window">@Html.ActionLink("Measurement Type", "Index", new { sortOrder = ViewBag.MeasurementTypeSortParm })</div>
+                <div class="display-window">@Html.ActionLink("Value", "Index", new { sortOrder = ViewBag.ValueSortParm })</div>
+                <div class="display-window">@Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })</div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    <div class="display-window">@Html.ActionLink("Place Type", "Index", new { sortOrder = ViewBag.PlaceSortParm })</div>
-                    <div class="display-window">@Html.ActionLink("Measurement Type", "Index", new { sortOrder = ViewBag.MeasurementTypeSortParm })</div>
-                    <div class="display-window">@Html.ActionLink("Value", "Index", new { sortOrder = ViewBag.ValueSortParm })</div>
-                    <div class="display-window">@Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })</div>
-                </th>
-                <th></th>
+                <td>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.PlaceType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Value)</div>
+                    <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
+                </td>
+                <td>
+                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <div class="display-window">@Html.DisplayFor(modelItem => item.PlaceType)</div>
-                        <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
-                        <div class="display-window">@Html.DisplayFor(modelItem => item.Value)</div>
-                        <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
-                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-page="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+   
+</a>
+<a asp-action="Index"
+ 
+   asp-route-page="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
