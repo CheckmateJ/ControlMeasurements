@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlMeasurements.Migrations
 {
     [DbContext(typeof(MeasurementsContext))]
-    [Migration("20190308144838_Price")]
-    partial class Price
+    [Migration("20190319125128_Amount")]
+    partial class Amount
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
