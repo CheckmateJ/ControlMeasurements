@@ -54,7 +54,9 @@ namespace ControlMeasurements.Controllers
                     }
 
                     subcard.Sum = subcard.MeasurementViews.Any(x => x.Change != null) ? (double)subcard.MeasurementViews.Sum(x => x.Change) : 0;
-                    subcard.Cost = subcard.Sum * prices.First(x => x.MeasurementType == card.MeasurementType).Price;
+                    var amount = prices.First(x => x.MeasurementType == card.MeasurementType);
+                    var price = amount.Price;
+                    subcard.Cost = subcard.Sum * price;
                 };
             }
             
