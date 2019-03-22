@@ -4,18 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <br />
-    <div class="button-Create" style="text-align:center;">
-        <a class="btn btn-outline-success btn-sm" asp-action="Create" role="button">Create New</a>
-    </div>
-</p>
 <table>
     <thead>
         <tr>
             <th>
+                <div class="display-window">@Html.DisplayNameFor(model => model.MeasurementType)</div>
+            </th>
+            <th>
                 <div class="display-window">@Html.DisplayNameFor(model => model.Price)</div>
-                <div class="display-window">@Html.DisplayNameFor(model => model.Date)</div>
             </th>
             <th></th>
         </tr>
@@ -23,16 +19,17 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <div class="display-window">@Html.DisplayFor(modelItem => item.Price)</div>
-                    <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
-                </td>
-                <td>
-                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
-                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+            </td>
+            <td>
+                <div class="display-window">@Html.DisplayFor(modelItem => item.Price)</div>
+            </td>
+            <td>
+                <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -21,27 +21,7 @@ namespace ControlMeasurements.Controllers
             var measurements = _context.Measurements;
             var amounts = _context.Amounts;
 
-            var prices = amounts
-                         .GroupBy(x => x.MeasurementType)
-                         .Select(g => new Card
-                         {
-
-                             MeasurementType = g.Key,
-                             Subcards = g.Select(p => new Subcard
-                             {
-                                Cost = g.OrderByDescending(x=>x.Date)
-                                        .Take(2)
-                                        .Select(c=> new Amounts
-                                        {
-                                            Amount = c
-                                        })
-                                        .ToList()
-                             
-                             })
-                             .ToList()
-                         })
-                         .ToList();
-           
+            var prices = amounts.ToList();
 
             var cards = measurements
                                 .GroupBy(x => x.MeasurementType)
@@ -64,27 +44,18 @@ namespace ControlMeasurements.Controllers
                                 })
                                 .ToList();
 
-            foreach (var measurement in cards)
+            foreach (var card in cards)
             {
-                foreach (var subcard in measurement.Subcards)
+                foreach (var subcard in card.Subcards)
                 {
                     for (int i = 0; i < subcard.MeasurementViews.Count - 1; i++)
                     {
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                        subcard.Sum += subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                       
+                    }
 
-                    } 
+                    subcard.Sum = subcard.MeasurementViews.Any(x => x.Change != null) ? (double)subcard.MeasurementViews.Sum(x => x.Change) : 0;
+                    subcard.Cost = subcard.Sum * prices.First(x => x.MeasurementType == card.MeasurementType).Price;
                 };
-            }
-
-            foreach (var price in prices)
-            {
-                foreach(var sbcard in price.Subcards)
-                {
-                    for (int i = 0; i < sbcard.Cost.Count; i++)
-                        sbcard.Cost[i].Total = sbcard.Cost[i].Amount.Price * sbcard.Sum;
-                }
             }
             
             return View(cards);

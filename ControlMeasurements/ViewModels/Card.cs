@@ -18,13 +18,7 @@ namespace ControlMeasurements.ViewModels
 
         public double Sum { get; set; }
 
-        public double Count { get; set; }
-
-        public List<Amounts> Cost { get; set; }
-
-        
-
-
+        public double Cost { get; set; }
     }
 
     public class MeasurementView
@@ -32,13 +26,6 @@ namespace ControlMeasurements.ViewModels
         public Measurement Measurement { get; set; }
 
         public double? Change { get; set; }
-    }
-
-    public class Amounts
-    {
-        public Amount Amount { get; set; }
-
-        public double Total { get; set; }
     }
 
 }
