@@ -1,6 +1,8 @@
 ﻿using ControlMeasurements.Data;
+using ControlMeasurements.Models;
 using ControlMeasurements.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ControlMeasurements.Controllers
@@ -17,6 +19,9 @@ namespace ControlMeasurements.Controllers
         public IActionResult Index()
         {
             var measurements = _context.Measurements;
+            var amounts = _context.Amounts;
+
+            var prices = amounts.ToList();
 
             var cards = measurements
                                 .GroupBy(x => x.MeasurementType)
@@ -39,19 +44,22 @@ namespace ControlMeasurements.Controllers
                                 })
                                 .ToList();
 
-            foreach (var measurement in cards)
+            foreach (var card in cards)
             {
-                foreach (var subcard in measurement.Subcards)
+                foreach (var subcard in card.Subcards)
                 {
                     for (int i = 0; i < subcard.MeasurementViews.Count - 1; i++)
                     {
                         subcard.MeasurementViews[i].Change = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                        subcard.Sum = subcard.MeasurementViews[i].Measurement.Value - subcard.MeasurementViews[i + 1].Measurement.Value;
-                        subcard.Count += subcard.Sum;
-
                     }
-                }
+
+                    subcard.Sum = subcard.MeasurementViews.Any(x => x.Change != null) ? (double)subcard.MeasurementViews.Sum(x => x.Change) : 0;
+                    var amount = prices.First(x => x.MeasurementType == card.MeasurementType);
+                    var price = amount.Price;
+                    subcard.Cost = subcard.Sum * price;
+                };
             }
+            
             return View(cards);
         }
     }

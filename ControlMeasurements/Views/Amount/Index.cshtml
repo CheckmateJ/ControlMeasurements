@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ControlMeasurements.Models.Amount>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                <div class="display-window">@Html.DisplayNameFor(model => model.MeasurementType)</div>
+            </th>
+            <th>
+                <div class="display-window">@Html.DisplayNameFor(model => model.Price)</div>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+            </td>
+            <td>
+                <div class="display-window">@Html.DisplayFor(modelItem => item.Price)</div>
+            </td>
+            <td>
+                <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
