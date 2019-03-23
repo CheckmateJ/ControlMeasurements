@@ -15,6 +15,10 @@ namespace ControlMeasurements.ViewModels
         public PlaceType PlaceType { get; set; }
 
         public List<MeasurementView> MeasurementViews { get; set; }
+
+        public double Sum { get; set; }
+
+        public double Count { get; set; }
     }
 
     public class MeasurementView
