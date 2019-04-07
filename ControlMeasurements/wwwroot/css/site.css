@@ -7,30 +7,11 @@ body {
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+.container body-content {
     padding-left: 15px;
     padding-right: 15px;
+    text-align:center;
 }
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
-
-
 
 .nav li a {
     color: white;
@@ -50,14 +31,18 @@ body {
     text-align: center;
     width: 220px;
 }
+.display-window-price{
+    float:left;
+    margin-top:10px;
+    text-align:center;
+    width:400px;
+    
+}
 
 #navbarNav a {
     color: lightgray;
 }
 
-.card-body p {
-    color: white;
-}
 
 .card.border-info {
     width: 300px;
@@ -65,9 +50,14 @@ body {
 }
 
 .card-title {
-    color: white;
+    color: black;
 }
 a
 {
     color:white;
 }
+.card-body strong,small,p
+{
+    color: black;
+}
+

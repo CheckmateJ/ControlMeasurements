@@ -8,10 +8,8 @@
     <thead>
         <tr>
             <th>
-                <div class="display-window">@Html.DisplayNameFor(model => model.MeasurementType)</div>
-            </th>
-            <th>
-                <div class="display-window">@Html.DisplayNameFor(model => model.Price)</div>
+                <div class="display-window-price">@Html.DisplayNameFor(model => model.MeasurementType)</div>
+                <div class="display-window-price">@Html.DisplayNameFor(model => model.Price)</div>
             </th>
             <th></th>
         </tr>
@@ -21,10 +19,8 @@
         {
         <tr>
             <td>
-                <div class="display-window">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
-            </td>
-            <td>
-                <div class="display-window">@Html.DisplayFor(modelItem => item.Price)</div>
+                <div class="display-window-price">@Html.DisplayFor(modelItem => item.MeasurementType)</div>
+                <div class="display-window-price">@Html.DisplayFor(modelItem => item.Price)</div>
             </td>
             <td>
                 <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
