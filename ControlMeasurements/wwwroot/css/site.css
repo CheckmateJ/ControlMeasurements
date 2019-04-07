@@ -2,7 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 body {
     padding-bottom: 20px;
-    background-color: white;
+        
 }
 
 /* Wrapping element */
@@ -30,9 +30,7 @@ body {
     }
 }
 
-.navbar {
-    background-color: lightgray;
-}
+
 
 .nav li a {
     color: white;
@@ -54,11 +52,11 @@ body {
 }
 
 #navbarNav a {
-    color: black;
+    color: lightgray;
 }
 
 .card-body p {
-    color: black;
+    color: white;
 }
 
 .card.border-info {
@@ -67,9 +65,9 @@ body {
 }
 
 .card-title {
-    color: black;
+    color: white;
 }
 a
 {
-    color:black;
+    color:white;
 }
