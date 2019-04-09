@@ -7,10 +7,10 @@
 <p>
     <br />
     <div class="button-Create" style="text-align:center;">
-        <a class="btn btn-outline-success btn-sm" asp-action="Create" role="button">Create New</a>
+        <a class="btn btn-success btn-sm" asp-action="Create" role="button">Create New</a>
     </div>
 </p>
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
 
@@ -34,8 +34,8 @@
                     <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
                 </td>
                 <td>
-                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
-                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
+                    <a class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
                 </td>
             </tr>
         }

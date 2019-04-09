@@ -15,6 +15,7 @@ body {
 
 .nav li a {
     color: white;
+    text-align:center;
 }
 
 .card {
@@ -60,4 +61,6 @@ a
 {
     color: black;
 }
-
+.form-control{
+    width:200px;
+}

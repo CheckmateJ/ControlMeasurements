@@ -4,6 +4,7 @@
     ViewData["Title"] = "Edit";
 
 }
+<br />
 <h4>Edit</h4>
 <br />
 <form asp-action="Edit">
@@ -12,12 +13,10 @@
     <div class="form-group">
         @Html.DropDownList("PlaceType",
               new SelectList(Enum.GetValues(typeof(PlaceType))),
-          "Select PlaceType",
          new { @class = "form-control"})
         <br />
         @Html.DropDownList("MeasurementType",
                       new SelectList(Enum.GetValues(typeof(MeasurementType))),
-                      "Select MeasurementType",
                        new { @class = "form-control"})
         <br />
         <label asp-for="Value" class="control-label">Measurement</label>
@@ -25,9 +24,9 @@
         <span asp-validation-for="MeasurementType" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-outline-success btn-sm" />
+        <input type="submit" value="Save" class="btn btn-success btn-sm" />
     </div>
 </form>
 <div>
-    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" role="button">Back to List</a>
+    <a class="btn btn-primary btn-sm" asp-action="Index" role="button">Back to List</a>
 </div>

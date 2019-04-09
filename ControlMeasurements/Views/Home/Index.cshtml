@@ -9,13 +9,13 @@
     @foreach (var CardViewModel in Model)
     {
     <div class="card text-white bg-danger mb-3">
-        <div class="card-header">@CardViewModel.MeasurementType</div>
+        <div class="card-header" style="font-size: 20px;">@CardViewModel.MeasurementType</div>
         <div class="card-body text-dark">
             <div class="card-body">
 
                 @foreach (var measurementView in @CardViewModel.Subcards)
                 {
-                <div style="font-size:20px"> <p><strong>@measurementView.PlaceType</strong></p></div>
+                <div style="font-size:15px"> <p><strong>@measurementView.PlaceType</strong></p></div>
 
                     @foreach (var measurement in measurementView.MeasurementViews)
                     {
