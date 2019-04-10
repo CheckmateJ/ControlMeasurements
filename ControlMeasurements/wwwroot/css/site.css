@@ -50,17 +50,22 @@ body {
     float: left;
 }
 
-.card-title {
-    color: black;
+.card-title strong {
+    color: gray;
+    font-size:18px;
 }
 a
 {
     color:white;
 }
-.card-body strong,small,p
+.card-body p,strong 
 {
-    color: black;
+    color: white;
 }
 .form-control{
     width:200px;
+}
+.footer p{
+    text-align:center;
+    color: white;
 }

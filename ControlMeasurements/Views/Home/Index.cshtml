@@ -8,20 +8,18 @@
 <div class="row">
     @foreach (var CardViewModel in Model)
     {
-    <div class="card text-white bg-danger mb-3">
-        <div class="card-header" style="font-size: 20px;">@CardViewModel.MeasurementType</div>
-        <div class="card-body text-dark">
-            <div class="card-body">
-
+    <div class="card text-white bg-secondary mb-3">
+        <div class="card-header" style="font-size: 23px;">@CardViewModel.MeasurementType</div>
+        <div class="card-body">
                 @foreach (var measurementView in @CardViewModel.Subcards)
                 {
-                <div style="font-size:15px"> <p><strong>@measurementView.PlaceType</strong></p></div>
+            <div class="card-title"><strong>@measurementView.PlaceType</strong></div>
 
                     @foreach (var measurement in measurementView.MeasurementViews)
                     {
 
-                        <strong><text>Measurement = </text>@measurement.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text></strong>
-                        <sup><strong>@measurement.Change?.ToString("0.00")</strong></sup>
+                        <text>Measurement = </text>@measurement.Measurement.Value.ToString("0.00")<text>m<sup>3</sup></text>
+                        <sup>@measurement.Change?.ToString("0.00")</sup>
                         <br />
                         <div style="line-height:1px;">
                             <small>@measurement.Measurement.Date.ToString("yyyy-MM-dd HH:mm")</small>
@@ -29,17 +27,17 @@
                         <br />
                     }
                 }
-            </div>
+            
         </div>
     </div>
     }
-    <div class="card text-white bg-warning mb-3">
-        <div class="card-header">Total utilities consumption:</div>
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header bg-primary" style="font-size: 23px;" >Total utilities consumption:</div>
         <div class="card-body text-danger">
             <div class="card-body">
                 @foreach (var card in Model)
                 {
-                    <p><strong>@Html.DisplayFor(item => card.MeasurementType)</strong></p>
+                 <div class="card-title"><p><strong>@Html.DisplayFor(item => card.MeasurementType)</strong></p></div>
                     foreach (var sum in card.Subcards)
                     {
                         <p><text> </text> @Html.DisplayFor(item => sum.PlaceType) = @sum.Sum</p>
