@@ -1,17 +1,9 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\
-for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding-bottom: 20px;
-        
+﻿body {
+    padding-bottom: 20px;        
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.container body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    text-align:center;
-}
+
+
 
 .nav li a {
     color: white;
@@ -22,11 +14,13 @@ body {
     float: left;
     margin: 5px;
     margin-top: 10px;
-    text-align: center;
+    text-align: left;
     display: inline-block;
-    width: 350px;
+    width: 310px;
 }
-
+.row{
+    margin-left:10px;
+}
 .display-window {
     float: left;
     text-align: center;
@@ -45,10 +39,6 @@ body {
 }
 
 
-.card.border-info {
-    width: 300px;
-    float: left;
-}
 
 .card-title strong {
     color: gray;
@@ -68,4 +58,16 @@ a
 .footer p{
     text-align:center;
     color: white;
+}
+.headline{
+    margin-left:10px;
+    text-align:left;
+}
+.edit{
+    margin-left:25px;
+    margin-top:5px;
+}
+.delete{
+    margin-left:25px;
+    margin-top:5px; 
 }
