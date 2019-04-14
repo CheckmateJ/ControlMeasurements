@@ -1,13 +1,14 @@
 ﻿body {
-    padding-bottom: 20px;        
+    padding-bottom: 20px;
 }
 
-
-
+#container {
+    padding-left: 15px;
+}
 
 .nav li a {
     color: white;
-    text-align:center;
+    text-align: center;
 }
 
 .card {
@@ -18,56 +19,57 @@
     display: inline-block;
     width: 310px;
 }
-.row{
-    margin-left:10px;
+
+.row {
+    margin-left: 10px;
 }
+
 .display-window {
     float: left;
     text-align: center;
     width: 220px;
 }
-.display-window-price{
-    float:left;
-    margin-top:10px;
-    text-align:center;
-    width:400px;
-    
+
+.display-window-price {
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+    width: 400px;
 }
-
-#navbarNav a {
-    color: lightgray;
-}
-
-
 
 .card-title strong {
     color: gray;
-    font-size:18px;
+    font-size: 18px;
 }
-a
-{
-    color:white;
-}
-.card-body p,strong 
-{
+
+a {
     color: white;
 }
-.form-control{
-    width:200px;
-}
-.footer p{
-    text-align:center;
+
+.card-body p, strong {
     color: white;
 }
-.headline{
-    margin-left:10px;
-    text-align:left;
+
+.form-control {
+    width: 200px;
 }
-.edit{
-    margin-left:25px;
-    margin-top:5px;
+
+.footer p {
+    text-align: center;
+    color: white;
 }
-.delete{
-    margin-left:25px;
-    margin-top:5px; 
+
+.headline {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.edit {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.delete {
+    margin-left: 25px;
+    margin-top: 5px;
 }
