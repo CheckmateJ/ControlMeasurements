@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "Create";
 }
+<br />
 
-<h4>Create</h4>
+<h5 style="margin-left:25px;">Create <br /> Measure</h5>
 
-<h4>Measure</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,16 +25,16 @@
                 </div>
                 <br />
                 <label asp-for="Value" class="control-label">Measurement</label>
-                <input asp-for="Value" class="form-control" /> 
+                <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="MeasurementType" class="text-danger"></span>
                 <br />
             </div>
             <div class="form-group">
-                <button class="btn btn-outline-secondary btn-sm" type="submit">Create</button>
+                <button class="btn btn-success btn-sm" type="submit">Create</button>
             </div>
         </form>
     </div>
 </div>
 <div>
-    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" role="button">Back to List</a>
+    <a class="btn btn-primary btn-sm" asp-action="Index" role="button" style="margin-left:25px;">Back to List</a>
 </div>

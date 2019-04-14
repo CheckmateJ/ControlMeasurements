@@ -1,4 +1,4 @@
-﻿using ControlMeasurements.Data;
+﻿ using ControlMeasurements.Data;
 using ControlMeasurements.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,36 +19,42 @@ namespace ControlMeasurements.Controllers
 
         public async Task<IActionResult> Index(string sortOrder, int? page)
         {
-            
             ViewBag.PlaceSortParm = String.IsNullOrEmpty(sortOrder) ? "PlaceType" : "";
             ViewBag.MeasurementType = sortOrder == "MeasurementType" ? "MeasurementType_desc" : "MeasurementType";
             ViewBag.ValueSortParm = sortOrder == "Value" ? "Value_desc" : "Value";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
             var measurement = from m in _context.Measurements
-                           select m;
+                              select m;
             switch (sortOrder)
             {
-                case "PlaceType": 
+                case "PlaceType":
                     measurement = measurement.OrderByDescending(s => s.PlaceType);
                     break;
+
                 case "MeasurementType":
                     measurement = measurement.OrderBy(s => s.MeasurementType);
                     break;
+
                 case "MeasurementType_desc":
                     measurement = measurement.OrderByDescending(s => s.MeasurementType);
                     break;
+
                 case "Value":
                     measurement = measurement.OrderBy(s => s.Value);
                     break;
+
                 case "Value_desc":
                     measurement = measurement.OrderByDescending(s => s.Value);
                     break;
+
                 case "Date":
                     measurement = measurement.OrderBy(s => s.Date);
                     break;
+
                 case "Date_desc":
                     measurement = measurement.OrderByDescending(s => s.Date);
                     break;
+
                 default:
                     measurement = measurement.OrderBy(s => s.PlaceType);
                     break;
@@ -68,7 +74,6 @@ namespace ControlMeasurements.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 _context.Add(measurement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

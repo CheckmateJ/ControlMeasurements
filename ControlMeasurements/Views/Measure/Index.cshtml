@@ -3,14 +3,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<br />
+<div class="headline"><h1>Add Measurements</h1></div>
+<br />
 <p>
     <br />
-    <div class="button-Create" style="text-align:center;">
-        <a class="btn btn-outline-success btn-sm" asp-action="Create" role="button">Create New</a>
+    <div class="button-Create">
+        <a class="btn btn-success btn-sm" asp-action="Create" role="button" style="margin-left:10px;">Create New</a>
     </div>
 </p>
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
 
@@ -34,8 +36,8 @@
                     <div class="display-window">@Html.DisplayFor(modelItem => item.Date)</div>
                 </td>
                 <td>
-                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button">Edit</a>
-                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button">Delete</a>
+                    <a class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id" role="button"><i class="icon-pencil"></i></a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id" role="button"><i class="icon-trash-empty"></i></a>
                 </td>
             </tr>
         }
@@ -50,10 +52,8 @@
    asp-route-page="@(Model.PageIndex - 1)"
    class="btn btn-default @prevDisabled">
     Previous
-   
 </a>
 <a asp-action="Index"
- 
    asp-route-page="@(Model.PageIndex + 1)"
    class="btn btn-default @nextDisabled">
     Next

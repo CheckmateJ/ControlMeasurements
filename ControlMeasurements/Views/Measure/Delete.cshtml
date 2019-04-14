@@ -4,30 +4,31 @@
     ViewData["Title"] = "Delete";
 
 }
-<h4>Delete</h4>
-<br />
-<form asp-action="Delete">
-    <div asp-validation-summary="ModelOnly"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        @Html.DropDownList("PlaceType",
-               new SelectList(Enum.GetValues(typeof(PlaceType))),
-           "Select PlaceType",
-          new { @class = "form-control"})
-        <br />
-        @Html.DropDownList("MeasurementType",
-                      new SelectList(Enum.GetValues(typeof(MeasurementType))),
-                      "Select MeasurementType",
-                       new { @class = "form-control"})
-        <br />
-        <label asp-for="Value" class="control-label">Measurement</label>
-        <input asp-for="Value" class="form-control" />
-        <span asp-validation-for="MeasurementType" class="text-danger"></span>
+<div class="delete">
+    <br/>
+    <h4>Delete</h4>
+    <br />
+    <form asp-action="Delete">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            @Html.DropDownList("PlaceType",
+                   new SelectList(Enum.GetValues(typeof(PlaceType))),
+              new { @class = "form-control"})
+            <br />
+            @Html.DropDownList("MeasurementType",
+                          new SelectList(Enum.GetValues(typeof(MeasurementType))),
+                           new { @class = "form-control"})
+            <br />
+            <label asp-for="Value" class="control-label">Measurement</label>
+            <input asp-for="Value" class="form-control" />
+            <span asp-validation-for="MeasurementType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this measurement?')" />
+        </div>
+    </form>
+    <div>
+        <a class="btn btn-primary btn-sm" asp-action="Index" role="button">Back to List</a>
     </div>
-    <div class="form-group">
-        <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this measurement?')" />
-    </div>
-</form>
-<div>
-    <a class="btn btn-outline-secondary btn-sm" asp-action="Index" role="button">Back to List</a>
 </div>
